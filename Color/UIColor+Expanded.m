@@ -22,7 +22,7 @@ UIColor *RandomColor()
     if (!seeded)
     {
         seeded = YES;
-        srandom(time(0));
+        srandom((unsigned)time(0));
     }
     return [UIColor colorWithRed:random() / (CGFloat) LONG_MAX
                            green:random() / (CGFloat) LONG_MAX
@@ -1163,7 +1163,7 @@ void HSPtoRGB(
     CGFloat c[kMaxComponents];
     NSUInteger i = 0;
     
-    if (![scanner scanFloat: &c[i++]]) return nil;
+    if (![scanner scanDouble: &c[i++]]) return nil;
     
     while (1)
     {
@@ -1171,7 +1171,7 @@ void HSPtoRGB(
         if (i >= kMaxComponents) return nil;
         if ([scanner scanString:@"," intoString:NULL])
         {
-            if (![scanner scanFloat: &c[i++]]) return nil;
+            if (![scanner scanDouble: &c[i++]]) return nil;
         }
         else
         {
@@ -1326,7 +1326,7 @@ NSDictionary *kelvin = nil;
     if (!seeded)
     {
         seeded = YES;
-        srandom(time(0));
+        srandom((unsigned)time(0));
     }
     return [UIColor colorWithRed:random() / (CGFloat) LONG_MAX
                            green:random() / (CGFloat) LONG_MAX
@@ -1340,7 +1340,7 @@ NSDictionary *kelvin = nil;
     if (!seeded)
     {
         seeded = YES;
-        srandom(time(0));
+        srandom((unsigned)time(0));
     }
     return [UIColor colorWithRed:scaleFactor * random() / (CGFloat) LONG_MAX
                            green:scaleFactor * random() / (CGFloat) LONG_MAX
@@ -1354,7 +1354,7 @@ NSDictionary *kelvin = nil;
     if (!seeded)
     {
         seeded = YES;
-        srandom(time(0));
+        srandom((unsigned)time(0));
     }
     CGFloat difference = 1.0f - scaleFactor;
     return [UIColor colorWithRed:difference + scaleFactor * random() / (CGFloat) LONG_MAX
